@@ -5,7 +5,6 @@ function Pet(name){
     this.fitness = 10;
   };
   
-  
   Pet.prototype = {
       
     growUp : function(){
@@ -28,6 +27,18 @@ function Pet(name){
           this.hunger-=3
       }else{
           this.hunger = 0;
+      }
+  }
+
+  Pet.prototype.checkUp = function (){
+    if(this.fitness <= 3 && this.hunger >= 5 ){
+          return 'I am hungry AND i need a walk'
+      } else if (this.hunger > 5){
+          return 'I am hungry'
+      }else if(this.fitness <= 3 ){
+          return 'I need a walk'
+      } else {
+          return 'I feel great'
       }
   }
   
