@@ -43,7 +43,7 @@ describe('constructor', () => {
 
             expect(pet.fitness).toEqual(10);
         });
-        it('decreases hunger by to a 3', () => {
+        it('decreases hunger by 3', () => {
             const pet = new Pet('Fido');
 
             pet.hunger = 2;
@@ -83,7 +83,25 @@ describe('constructor', () => {
             expect(pet.checkUp()).toEqual('I am hungry AND i need a walk')
         })
 
-    });
+        it('if pets age, hunger and fitness pass the isAlive property should return true', ()=>{
+            const pet = new Pet('Fido');
+            pet.hunger = 6
+            pet.fitness = 2
+            pet.age = 10
+            expect(pet.isAlive).toEqual(true)
+        })
 
+        describe('feed', () => {
+           
+         
+            it('throws an error if the pet is not alive', () => {
+                const pet = new Pet('Fido');
+                pet.age = 30;
+                expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
+              });
+            });
+        
+      
+    });
 
 })

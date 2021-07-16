@@ -1,0 +1,15 @@
+{
+  "name": "virtual-pets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "JEST"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "D": "^1.0.0",
+    "jest": "^27.0.6"
+  }
+}
