@@ -3,15 +3,17 @@ function Pet(name) {
   this.age = 0;
   this.hunger = 0;
   this.fitness = 10;
+  this.children = []
 };
-
-
 
 Pet.prototype = {
   get isAlive() {
     return this.age < 30 && this.hunger < 10 && this.fitness > 0;
   },
   growUp: function () {
+    if (!this.isAlive) {
+      throw new Error('Your pet is no longer alive :(');
+    }
     this.age += 1
     this.hunger += 5
     this.fitness -= 3
@@ -19,7 +21,10 @@ Pet.prototype = {
 }
 
 Pet.prototype.walk = function () {
-  if ((this.fitness + 4) <= 10) {
+  if (!this.isAlive) {
+    throw new Error('Your pet is no longer alive :(');
+  }
+  else if ((this.fitness + 4) <= 10) {
     this.fitness += 4;
   } else {
     this.fitness = 10;
@@ -38,7 +43,10 @@ Pet.prototype.feed = function () {
 }
 
 Pet.prototype.checkUp = function () {
-  if (this.fitness <= 3 && this.hunger >= 5) {
+  if (!this.isAlive) {
+    return ('Your pet is no longer alive :(');
+  }
+  else if (this.fitness <= 3 && this.hunger >= 5) {
     return 'I am hungry AND i need a walk'
   } else if (this.hunger > 5) {
     return 'I am hungry'
@@ -49,6 +57,11 @@ Pet.prototype.checkUp = function () {
   }
 }
 
+Pet.prototype.haveBaby = function(name){
+this.children.push(new Pet(name))
+console.log(this.children)
+return this.children;
+}
 
 
 

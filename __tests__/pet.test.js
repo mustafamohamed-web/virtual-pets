@@ -90,18 +90,39 @@ describe('constructor', () => {
             pet.age = 10
             expect(pet.isAlive).toEqual(true)
         })
+        it('If pet is not alive should return pet is not alive',()=>{
+            const pet = new Pet('Fido');
+            pet.age = 30;
+            expect(()=>pet.growUp()).toThrow('Your pet is no longer alive :(')
+        })
+
+        it('If pet is not alive should return pet is not alive',()=>{
+            const pet = new Pet('Fido');
+            pet.age = 30;
+            expect(()=>pet.walk()).toThrow('Your pet is no longer alive :(')
+        })
 
         describe('feed', () => {
            
-         
+        
             it('throws an error if the pet is not alive', () => {
                 const pet = new Pet('Fido');
                 pet.age = 30;
-                expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
+                expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
               });
             });
         
-      
+      describe('creates a new baby',()=>{
+          it('The output of haveBaby is the same as children',()=>{
+              const parent = new Pet('john');
+              expect(parent.haveBaby()).toEqual(parent.children)
+          })
+          it('Test the name of the child',()=>{
+            const parent = new Pet('john');
+            parent.haveBaby('jim')
+            expect(parent.children[0].name).toEqual('jim')
+          })
+      })
     });
 
 })
